@@ -34,7 +34,7 @@ namespace DemoConsumirAPI.Services
                 catch (Exception ex)
                 {
                     throw ex;
-                } 
+                }
             }
             return Result;
         }
@@ -43,6 +43,12 @@ namespace DemoConsumirAPI.Services
         public async Task<List<Pie>> GetAllPies()
         {
             return await SendGet<List<Pie>>("/api/catalog/pies");
+        }
+        public List<Pie> GetAllPiesAsync()
+        {
+            List<Pie> Result = null;
+            Task.Run(async () => Result = await GetAllPies()).Wait();
+            return Result;
         }
 
         public async Task<Pie> GetPieById(int ID)

@@ -9,7 +9,7 @@ namespace DemoConsumirAPI.ViewModels
     
     public class MainPageViewModel
     {
-        IProxy Proxy;
+        Proxy Proxy;
 
         public MainPageViewModel()
         {
@@ -17,9 +17,9 @@ namespace DemoConsumirAPI.ViewModels
             GetData();
         }
 
-        async void GetData()
+        void GetData()
         {
-            var Datos = await Proxy.GetAllPies();
+            var Datos =  Proxy.GetAllPiesAsync();
             Pies = new ObservableCollection<Pie>(Datos);
         }
 
