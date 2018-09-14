@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoConsumirAPI.Views.PieById"
+             xmlns:vm="clr-namespace:DemoConsumirAPI.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:PieByIdViewModel></vm:PieByIdViewModel>
+    </ContentPage.BindingContext>
+    <ScrollView>
+
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Entry Text="{Binding ID}" Placeholder="0"/>
+                <Button Command="{Binding SearchPieByIDCommand}"></Button>
+            </StackLayout>
+            
+                <Label Text="{Binding Piee.Name, Mode=TwoWay}"/>
+                <Label Text="{Binding Piee.ShortDescription, Mode=TwoWay}"/>
+            </StackLayout>
+    </ScrollView>
+</ContentPage>

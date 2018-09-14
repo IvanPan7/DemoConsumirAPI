@@ -13,7 +13,7 @@ namespace DemoConsumirAPI.Services
     class Proxy : IProxy
     {
         //Base Address
-        string BaseAdress = "http://10.15.3.116:5000";
+        string BaseAdress = "http://192.168.60.140:5000";
 
         public async Task<T> SendGet<T>(string requestURI)
         {
@@ -63,7 +63,19 @@ namespace DemoConsumirAPI.Services
             var RT = await SendGet<List<Pie>>("/api/catalog/PiesOfTheWeek/");
             Result = RT.FindAll(p => p.IsPieOfTheWeek = true);
             return Result;
-        } 
+        }
+        public List<Pie> GetPiesOfTheWeekAsync()
+        {
+            List<Pie> Result = null;           
+            Task.Run(async () => Result = await GetPiesOfTheWeek()).Wait();
+            return Result;
+        }
+        public Pie GetPieByIdAsync(int ID)
+        {
+            Pie Result = null;
+            Task.Run(async () => Result = await GetPieById(ID)).Wait();
+            return Result;
+        }
         #endregion
     }
 }

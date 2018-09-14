@@ -11,7 +11,7 @@ namespace DemoConsumirAPI
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Views.PieById();
         }
 
         protected override void OnStart()
